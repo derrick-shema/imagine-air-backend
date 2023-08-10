@@ -1,0 +1,24 @@
+import Entity from "../common/models/entity";
+import Email from "../value-objects/user/user-email";
+import UserId from "../value-objects/user/user-id";
+import HashedPassword from "../value-objects/user/user-password";
+import UserRole from "../value-objects/user/user-role";
+import UserName from "../value-objects/user/username";
+
+class User extends Entity<UserId>{
+  constructor(
+    id: UserId,
+    private username: UserName,
+    private email: Email,
+    private hashedPassword: HashedPassword,
+    private role: UserRole,
+  ) {
+    super(id);
+  }
+
+  public Equals(other: Entity<UserId>): boolean {
+    return this.Id.Equals(other.Id);
+  }
+}
+
+export default User;
