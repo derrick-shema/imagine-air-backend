@@ -9,7 +9,7 @@ class String2 extends ValueObject
 
     static Create(fieldName: string, str: string) {
         return ConstrainedType
-            .CreateString(fieldName, (s => new String2(s)), 2, str);
+            .createString(fieldName, (s => new String2(s)), 2, str);
     }
 
     Equals(other: String2) {
@@ -28,7 +28,7 @@ class String3 extends ValueObject
 
     static Create(fieldName: string, str: string) {
         return ConstrainedType
-            .CreateString(fieldName, (s => new String3(s)), 3, str);
+            .createString(fieldName, (s => new String3(s)), 3, str);
     }
 
     Equals(other: String3) {
@@ -48,7 +48,7 @@ class String50 extends ValueObject
 
     static Create(fieldName: string, str: string) {
         return ConstrainedType
-            .CreateString(fieldName, (s => new String50(s)), 50, str);
+            .createString(fieldName, (s => new String50(s)), 50, str);
     }
 
     Equals(other: String50) {
@@ -68,7 +68,7 @@ class String100 extends ValueObject
 
     static Create(fieldName: string, str: string) {
         return ConstrainedType
-            .CreateString(fieldName, (s => new String100(s)), 100, str);
+            .createString(fieldName, (s => new String100(s)), 100, str);
     }
 
     Equals(other: String100): boolean {

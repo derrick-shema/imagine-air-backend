@@ -1,9 +1,9 @@
-import Entity from "../common/models/entity";
-import Email from "../value-objects/user/user-email";
-import UserId from "../value-objects/user/user-id";
-import HashedPassword from "../value-objects/user/user-password";
-import UserRole from "../value-objects/user/user-role";
-import UserName from "../value-objects/user/username";
+import Entity from "src/domain/common/models/entity";
+import UserId from "../value-objects/user-id";
+import UserName from "../value-objects/username";
+import Email from "../value-objects/user-email";
+import HashedPassword from "../value-objects/user-password";
+import UserRole from "../value-objects/user-role";
 
 class User extends Entity<UserId>{
   constructor(
