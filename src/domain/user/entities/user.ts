@@ -16,9 +16,9 @@ class User extends Entity<UserId>{
     super(id);
   }
 
-  public Equals(other: Entity<UserId>): boolean {
-    return this.Id.Equals(other.Id);
-  }
+  // public Equals(other: Entity<UserId>): boolean {
+  //   return this.Id.Equals(other.Id);
+  // }
 }
 
 export default User;
