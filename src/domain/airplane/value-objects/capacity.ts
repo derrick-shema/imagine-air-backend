@@ -8,6 +8,11 @@ class Capacity extends ValueObject {
 
   static create(fieldName: string, num: number) {
     return ConstrainedType
-          .createNumber(fieldName, (n => new Capacity(n)), 0, 200, num)
+          .createNumber(fieldName, (n => new Capacity(n)), 0, 1000, num)
   }
+  Equals(other: Capacity): boolean {
+    return this.value == other.value;
 }
+}
+
+export default Capacity;

@@ -1,25 +1,52 @@
-// Properties
-// plane id: for internal use
-//plane ARN or Tail Number: for regulatory purposes
-// make and model
-
-import Entity from "src/domain/common/models/entity";
-import CabinSection from "../value-objects/seatSection";
+import CabinSection from "./cabin-section";
 import PlaneId from "../value-objects/plane-id";
+import AggregateRoot from "src/domain/common/models/aggregate-root";
+import TailNumber from "../value-objects/tail-number";
+import PlaneIATACode from "../value-objects/plane-IATA-code";
+import Capacity from "../value-objects/capacity";
 
-//Methods
-//createPlane: takes in 
-//generate seatmap-helper function that designates seat numbers
-class Airplane extends Entity<PlaneId> {
+class Airplane extends AggregateRoot<PlaneId> {
+  getTailNumber(){
+    return this.tailNumber;
+  }
+  getPlaneIATACode(){
+    return this.planeIATAcode;
+  }
+  getMaxCapacity(){
+    return this.maxCapacity;
+  }
+  getCabinSections(){
+    return this.cabinSections;
+  }
   constructor(
     id: PlaneId,
-    private tailNumber: string,
-    private planeIATAcode: string, 
-    private maxCapacity: number,
+    private tailNumber: TailNumber,
+    private planeIATAcode: PlaneIATACode, 
+    private maxCapacity: Capacity,
     private cabinSections: CabinSection[]
 
   ) {
     super(id);
+  }
+
+  static create( 
+        id: PlaneId, 
+        tailNumber: TailNumber, 
+        planeIATAcode: PlaneIATACode, 
+        maxCapacity: Capacity, 
+        cabinSections: CabinSection[]) {
+          return new Airplane(
+            id,
+            tailNumber,
+            planeIATAcode,
+            maxCapacity,
+            cabinSections
+          )
+
+  }
+
+  Equals(other: Airplane): boolean {
+    return this.Id == other.Id;
   }
 }
 
