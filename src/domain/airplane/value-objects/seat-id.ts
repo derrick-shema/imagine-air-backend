@@ -1,14 +1,15 @@
 import ValueObject from "src/domain/common/models/value-object";
 import ConstrainedType from "src/domain/common/primitives/constrained-type";
+import { v4 as uuidv4 } from 'uuid';
 
 class SeatId extends ValueObject 
 {
-    // static createUnique() {
-    //     return this.create("SeatId", uuidv4());
-    // }
+    static createUnique() {
+        return this.create("SeatId", uuidv4());
+    }
 
     static create(fieldName: string, str: string) {
-        return 'st_'+ ConstrainedType
+        return ConstrainedType
             .createString(fieldName, (s => new SeatId(s)), 36, str);
     }
 

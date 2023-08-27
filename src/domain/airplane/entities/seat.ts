@@ -12,7 +12,9 @@ class Seat extends Entity<SeatId> {
     super(id);
   }
 
-  static create(fieldName:string, id: SeatId, seatDesignation: SeatDesignation, status: SeatStatus.AVAILABLE) {
+
+
+  static create(id: SeatId, seatDesignation: SeatDesignation, status: SeatStatus.AVAILABLE) {
     return new Seat(
       id,
       seatDesignation,
