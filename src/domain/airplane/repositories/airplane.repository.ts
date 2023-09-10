@@ -3,20 +3,20 @@ import PlaneId from "../value-objects/plane-id";
 
 interface AirplaneRepository
 {
-    // Save an airplane aggregate
+  // Save an airplane aggregate
   save(airplane: Airplane): Promise<void>;
 
   // Find an airplane by its ID
-  findById(planeId: PlaneId): Promise<Airplane | null>;
+  // findById(planeId: PlaneId): Promise<Airplane | null>;
 
-  // Find all airplanes
-  findAll(): Promise<Airplane[]>;
+  // // Find all airplanes
+  // findAll(): Promise<Airplane[]>;
 
-  // Update an existing airplane
-  update(airplane: Airplane): Promise<void>;
+  // // Update an existing airplane
+  // update(airplane: Airplane): Promise<void>;
 
-  // Delete an airplane
-  delete(planeId: PlaneId): Promise<void>;
+  // // Delete an airplane
+  // delete(planeId: PlaneId): Promise<void>;
 }
 
 export default AirplaneRepository;

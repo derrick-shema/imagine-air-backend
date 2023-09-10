@@ -7,13 +7,13 @@ import Capacity from "../value-objects/capacity";
 
 class Airplane extends AggregateRoot<PlaneId> {
   getTailNumber(){
-    return this.tailNumber;
+    return this.tailNumber.getValue();
   }
   getPlaneIATACode(){
-    return this.planeIATAcode;
+    return this.planeIATAcode.getValue();
   }
   getMaxCapacity(){
-    return this.maxCapacity;
+    return this.maxCapacity.getValue();
   }
   getCabinSections(){
     return this.cabinSections;
