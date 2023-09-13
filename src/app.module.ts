@@ -9,7 +9,7 @@ import { AirplaneModule } from './modules/plane/airplane.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://derrickshema:<Kwiga4991>@cluster0.pbfu2bn.mongodb.net/imagine-air'),
+    MongooseModule.forRoot('mongodb+srv://derrickshema:Kwiga4991@cluster0.pbfu2bn.mongodb.net/imagine-air'),
     AuthModule, 
     AirplaneModule,
     FlightModule],

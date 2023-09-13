@@ -4,5 +4,5 @@ export class RegisterPlaneDto {
   tailNumber: string;
   planeIATACode: string;
   maxCapacity: number;
-  cabinSections: CabinSectionDto[]
+  cabinSections: CabinSectionDto[];
 }
