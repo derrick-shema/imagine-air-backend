@@ -1,6 +1,6 @@
 import { Schema, Prop, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-import { CabinSectionDocument, CabinSectionSchema } from "./cabin-section-schema";
+import { CabinSectionSchema } from "./cabin-section-schema";
 import CabinSection from "src/domain/airplane/aggregates/cabin-section";
 
 // export interface AirplaneDocument extends Document {
@@ -51,7 +51,7 @@ export class Plane {
   maxCapacity: number;
 
   @Prop({required: true})
-  cabinSections: [CabinSection];
+  cabinSections: CabinSectionSchema[];
 }
 
 export const AirplaneSchema = SchemaFactory.createForClass(Plane);

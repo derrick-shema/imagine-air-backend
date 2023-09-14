@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import Airplane from "src/domain/airplane/aggregates/airplane";
 import CabinSection from "src/domain/airplane/aggregates/cabin-section";
 import Seat from "src/domain/airplane/entities/seat";
-import SeatStatus from "src/domain/airplane/enums/seat-status";
 import CabinSectionId from "src/domain/airplane/value-objects/cabin-section-id";
 import Capacity from "src/domain/airplane/value-objects/capacity";
 import PlaneIATACode from "src/domain/airplane/value-objects/plane-IATA-code";
@@ -32,7 +31,7 @@ export class RegisterPlaneUseCase {
         section.seats.map(s => Seat.create(
           SeatId.createUnique(),
           SeatDesignation.create('Seat Designation',s.seatDesignation),
-          SeatStatus.AVAILABLE
+          s.status
         ))
       ))
       )
