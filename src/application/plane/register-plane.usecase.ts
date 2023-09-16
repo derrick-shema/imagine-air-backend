@@ -24,8 +24,8 @@ export class RegisterPlaneUseCase {
       PlaneIATACode.create('plane IATA code', dto.planeIATACode),
       Capacity.create('plane capacity', dto.maxCapacity),
       dto.cabinSections.map(section => CabinSection.create(
-        section.sectionName,
         CabinSectionId.createUnique(),
+        section.sectionName,
         section.rows,
         section.arrangement,
         section.seats.map(s => Seat.create(
@@ -35,7 +35,7 @@ export class RegisterPlaneUseCase {
         ))
       ))
       )
-
+      console.log(dto.cabinSections);
       await this.airplaneRepository.save(airplane);
   }
 }
