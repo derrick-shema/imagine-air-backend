@@ -9,7 +9,7 @@ import { AirplaneModel, AirplaneDocument } from "./airplane-schema";
 export class MongoAirplaneRepository implements AirplaneRepository {
   constructor(@InjectModel(AirplaneModel.name) private readonly airplaneModel: Model<AirplaneDocument>) {}
   
-  async save(airplane: Airplane): Promise<void>{
+  async save(airplane: Airplane){
     const planeId = airplane.Id.getValue();
     const tailNumber = airplane.getTailNumber();
     const planeIATACode = airplane.getPlaneIATACode();
@@ -37,6 +37,5 @@ export class MongoAirplaneRepository implements AirplaneRepository {
     const newAirplane = new this.airplaneModel(airPlaneData);
     console.log(newAirplane);
     await newAirplane.save();
-    //return newAirplane.toObject() as Airplane;
   }
 }
