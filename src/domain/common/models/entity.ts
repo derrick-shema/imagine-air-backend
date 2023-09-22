@@ -11,7 +11,7 @@ abstract class Entity<Id extends ValueObject> extends Equatable<Entity<Id>> {
   }
 
   public Equals(other: Entity<Id>): boolean {
-    return this.Id.Equals(other.Id);
+    return this.id.Equals(other.Id);
   }
 }
 

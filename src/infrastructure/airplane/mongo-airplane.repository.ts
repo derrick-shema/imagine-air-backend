@@ -33,9 +33,7 @@ export class MongoAirplaneRepository implements AirplaneRepository {
       maxCapacity,
       cabinSections
     }
-    console.log(airPlaneData);
     const newAirplane = new this.airplaneModel(airPlaneData);
-    console.log(newAirplane);
     await newAirplane.save();
   }
 }

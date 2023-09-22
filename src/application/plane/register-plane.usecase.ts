@@ -35,7 +35,6 @@ export class RegisterPlaneUseCase {
         ))
       ))
       )
-      console.log(dto.cabinSections);
       await this.airplaneRepository.save(airplane);
       return airplane;
   } 
