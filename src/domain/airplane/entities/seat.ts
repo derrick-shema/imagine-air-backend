@@ -4,17 +4,24 @@ import SeatStatus from "../enums/seat-status";
 import SeatDesignation from "../value-objects/seat-designation";
 
 class Seat extends Entity<SeatId> {
+  getSeatDesignation() {
+    return this.seatDesignation.getValue();
+  }
+  getSeatStatus(){
+    return this.status;
+  }
+
   constructor(
     id: SeatId,
-    seatDesignation: SeatDesignation,
-    status: SeatStatus.AVAILABLE
+    private seatDesignation: SeatDesignation,
+    private status: string
   ){
     super(id);
   }
 
 
 
-  static create(id: SeatId, seatDesignation: SeatDesignation, status: SeatStatus.AVAILABLE) {
+  static create(id: SeatId, seatDesignation: SeatDesignation, status: string) {
     return new Seat(
       id,
       seatDesignation,

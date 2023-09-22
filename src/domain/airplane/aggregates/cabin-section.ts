@@ -3,9 +3,21 @@ import CabinSectionId from "../value-objects/cabin-section-id";
 import Seat from "../entities/seat";
 
 class CabinSection extends AggregateRoot<CabinSectionId>{
+  getSectionName() {
+    return this.sectionName;
+  }
+  getRows() {
+    return this.rows;
+  }
+  getArrangement() {
+    return this.arrangement;
+  }
+  getSeats() {
+    return this.seats;
+  }
   private constructor(
-    private sectionName: string,
     cabinSectionId: CabinSectionId,
+    private sectionName: string,
     private rows: number,
     private arrangement: number[],
     private seats: Seat[]
@@ -14,10 +26,10 @@ class CabinSection extends AggregateRoot<CabinSectionId>{
   }
 
   static create(
-      sectionName: string, cabinSectionId: CabinSectionId, rows: number,arrangement: number[], seats: Seat[] ) {
+    cabinSectionId: CabinSectionId, sectionName: string, rows: number,arrangement: number[], seats: Seat[] ) {
       return new CabinSection(
-        sectionName,
         cabinSectionId,
+        sectionName,
         rows,
         arrangement,
         seats

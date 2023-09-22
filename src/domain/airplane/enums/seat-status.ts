@@ -1,6 +1,8 @@
 enum SeatStatus {
-    RESERVED = 0,
-    AVAILABLE = 1
+    RESERVED = 'Reserved',
+    AVAILABLE = 'Available',
+    OCCUPIED = 'Occupied',
+    BLOCKED = 'Blocked'
 }
 
 export default SeatStatus;
