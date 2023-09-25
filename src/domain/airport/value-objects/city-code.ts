@@ -11,7 +11,7 @@ class CityCode extends ValueObject {
 
   static create(fieldName: string, str: string) {
     return ConstrainedType
-        .createString(fieldName, (s => new CityCode(s)), 10, str);
+        .createString(fieldName, (s => new CityCode(s)), 20, str);
 }
 
   Equals(other: CityCode): boolean {

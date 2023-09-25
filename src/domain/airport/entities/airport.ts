@@ -7,7 +7,7 @@ import CityCode from "../value-objects/city-code";
 
 class Airport extends Entity<AirportId> {
   getAirportId() {
-    return this.Id.getValue();
+    return;
   }
 
   getAirportName() {
