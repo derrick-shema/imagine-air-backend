@@ -2,7 +2,7 @@ import ValueObject from "src/domain/common/models/value-object";
 import ConstrainedType from "src/domain/common/primitives/constrained-type";
 import { v4 as uuidv4 } from 'uuid';
 
-class FlightId extends ValueObject {
+class PassengerId extends ValueObject {
 
   getValue() {
     return this.value as Readonly<string>;
@@ -12,17 +12,17 @@ class FlightId extends ValueObject {
   }
 
   static createUnique() {
-    return this.create("FlightId", uuidv4());
+    return this.create("PassengerId", uuidv4());
   }
 
   static create(fieldName: string, str: string) {
     return ConstrainedType
-        .createString(fieldName, (s => new FlightId(s)), 36, str);
+        .createString(fieldName, (s => new PassengerId(s)), 36, str);
   }
 
-  Equals(other: FlightId): boolean {
+  Equals(other: PassengerId): boolean {
     return this.value === other.value;
   }
 }
 
-export default FlightId;
+export default PassengerId;
