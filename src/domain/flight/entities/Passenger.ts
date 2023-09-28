@@ -23,7 +23,7 @@ class Passenger extends Entity<PassengerId> {
     super(id);
   }
 
-  create(id: PassengerId, firstName: string, lastName: string, seat: SeatDesignation){
+  static create(id: PassengerId, firstName: string, lastName: string, seat: SeatDesignation){
     return new Passenger(
       id,
       firstName,

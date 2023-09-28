@@ -22,7 +22,7 @@ class CrewMember extends Entity<CrewMemberId> {
     super(id);
   }
 
-  create(id: CrewMemberId, firstName: string, lastName: string, role: string) {
+  static create(id: CrewMemberId, firstName: string, lastName: string, role: string) {
     return new CrewMember(
       id,
       firstName,

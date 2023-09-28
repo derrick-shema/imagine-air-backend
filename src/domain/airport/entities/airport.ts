@@ -35,6 +35,16 @@ class Airport extends Entity<AirportId> {
   ) {
     super(id);
   }
+
+  static create(id: AirportId, airportName: AirportName, aiportIATA: IATA, city: CityName, city_code: CityCode) {
+    return new Airport(
+      id,
+      airportName,
+      aiportIATA,
+      city,
+      city_code
+    )
+  }
 }
 
 export default Airport;

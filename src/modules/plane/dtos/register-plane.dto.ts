@@ -1,8 +1,4 @@
-import { CabinSectionDto } from "./cabin-section.dto";
+import { BasePlaneDto } from "./base-plane.dto";
 
-export class RegisterPlaneDto {
-  tailNumber: string;
-  planeIATACode: string;
-  maxCapacity: number;
-  cabinSections: CabinSectionDto[];
+export class RegisterPlaneDto extends BasePlaneDto{
 }

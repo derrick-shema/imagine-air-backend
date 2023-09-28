@@ -1,5 +1,4 @@
 import Airplane from "../aggregates/airplane";
-import PlaneId from "../value-objects/plane-id";
 
 interface AirplaneRepository
 {
