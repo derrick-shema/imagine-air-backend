@@ -18,16 +18,16 @@ import CityName from "src/domain/airport/value-objects/city-name";
 import Flight from "src/domain/flight/aggregates/flight";
 import CrewMember from "src/domain/flight/entities/Crew";
 import Passenger from "src/domain/flight/entities/Passenger";
-import FlightRepository from "src/domain/flight/repositories/flight.repository";
 import CrewMemberId from "src/domain/flight/value-objects/crew-member-id";
 import FlightId from "src/domain/flight/value-objects/flight-id";
 import FlightName from "src/domain/flight/value-objects/flight-name";
 import PassengerId from "src/domain/flight/value-objects/passenger-id";
+import { MongoFlightRepository } from "src/infrastructure/flight/mongo-flight.repository";
 import { CreateFlightDto } from "src/modules/flight/dto/create-flight.dto";
 
 @Injectable()
 export class CreateFlightUseCase {
-  constructor(private readonly flightRepository: FlightRepository){}
+  constructor(private readonly flightRepository: MongoFlightRepository){}
 
   async execute(dto: CreateFlightDto): Promise<Flight> {
     const flight = Flight.create(
@@ -79,6 +79,7 @@ export class CreateFlightUseCase {
         SeatDesignation.create('seat designation', p.seat)
       ))
     )
+    await this.flightRepository.save(flight);
     return flight;
   }
 }

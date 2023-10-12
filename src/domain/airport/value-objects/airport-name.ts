@@ -11,7 +11,7 @@ class AirportName extends ValueObject {
 
   static create(fieldName: string, str: string) {
     return ConstrainedType
-        .createString(fieldName, (s => new AirportName(s)), 20, str);
+        .createString(fieldName, (s => new AirportName(s)), 50, str);
 }
 
   Equals(other: AirportName): boolean {

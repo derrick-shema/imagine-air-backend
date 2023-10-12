@@ -2,14 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { FlightService } from './flight.service';
 import { CreateFlightDto } from './dto/create-flight.dto';
 import { UpdateFlightDto } from './dto/update-flight.dto';
+import Flight from 'src/domain/flight/aggregates/flight';
 
-@Controller('flight')
+@Controller('flights')
 export class FlightController {
   constructor(private readonly flightService: FlightService) {}
 
-  @Post()
-  create(@Body() createFlightDto: CreateFlightDto) {
-    return this.flightService.create(createFlightDto);
+  @Post('register')
+  async create(@Body() createFlightDto: CreateFlightDto): Promise<Flight> {
+    return await this.flightService.create(createFlightDto);
   }
 
   @Get()

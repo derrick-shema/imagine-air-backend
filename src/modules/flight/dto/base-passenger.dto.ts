@@ -1,8 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export class BaseCrewMemberDto {
+export class BasePassengerDto {
   @ApiProperty()
-  crewMemberId: string;
+  passengerId: string;
 
   @ApiProperty()
   firstName: string;
@@ -11,5 +11,5 @@ export class BaseCrewMemberDto {
   lastName: string;
 
   @ApiProperty()
-  role: string;
+  seat: string;
 }

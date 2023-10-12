@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFlightDto } from './dto/create-flight.dto';
 import { UpdateFlightDto } from './dto/update-flight.dto';
+import { CreateFlightUseCase } from 'src/application/flight/create-flight.usecase';
+import Flight from 'src/domain/flight/aggregates/flight';
 
 @Injectable()
 export class FlightService {
-  create(createFlightDto: CreateFlightDto) {
-    return 'This action adds a new flight';
+  constructor(private readonly createFlightUseCase: CreateFlightUseCase){}
+  async create(dto: CreateFlightDto): Promise<Flight> {
+    return await this.createFlightUseCase.execute(dto);
   }
 
   findAll() {
