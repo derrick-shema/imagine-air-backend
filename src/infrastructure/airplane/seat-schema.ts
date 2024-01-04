@@ -1,22 +1,19 @@
-import { Schema } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
 
-export interface SeatDocument extends Document {
+export type SeatDocument = HydratedDocument<Seat>;
+
+@Schema()
+export class Seat {
+
+  @Prop()
   seatId: string;
+
+  @Prop()
   seatDesignation: string;
+  
+  @Prop()
   seatStatus: string;
 }
 
-export const SeatSchema = new Schema<SeatDocument>({
-  seatId: {
-    type: String,
-    required: true
-  },
-  seatDesignation: {
-    type: String,
-    required: true
-  },
-  seatStatus: {
-    type: String,
-    required: true
-  }
-})
+export const SeatSchema = SchemaFactory.createForClass(Seat);

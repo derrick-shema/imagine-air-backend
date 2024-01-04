@@ -1,8 +1,7 @@
-import { CabinSectionDto } from "./cabin-section.dto";
+import { OmitType } from "@nestjs/swagger";
+import { BasePlaneDto } from "./base-plane.dto";
+import { CreateCabinSectionDto } from "./create-cabin-section.dto";
 
-export class RegisterPlaneDto {
-  tailNumber: string;
-  planeIATACode: string;
-  maxCapacity: number;
-  cabinSections: CabinSectionDto[];
+export class RegisterPlaneDto extends OmitType(BasePlaneDto, ['planeId','cabinSections'] as const){
+  cabinSections: CreateCabinSectionDto[];
 }

@@ -1,33 +1,26 @@
-import { Schema, model} from "mongoose";
-import { Document } from "mongoose";
-import { CabinSectionDocument, CabinSectionSchema } from "./cabin-section-schema";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { CabinSection } from './cabin-section-schema';
+import { HydratedDocument } from 'mongoose';
 
-export interface AirplaneDocument extends Document {
+export type PlaneDocument = HydratedDocument<Plane>;
+
+@Schema()
+export class Plane {
+
+  @Prop()
   planeId: string;
+
+  @Prop()
   tailNumber: string;
+
+  @Prop()
   planeIATACode: string;
-  maxCapacity: number;
-  cabinSections: [CabinSectionDocument]
+
+  @Prop()
+  maxCapacity: string;
+
+  @Prop([CabinSection])
+  cabinSections: CabinSection[];
 }
 
-export const AirplaneSchema = new Schema<AirplaneDocument>({
-  planeId: {
-    type: String,
-    required: true
-  },
-  tailNumber: {
-    type: String,
-    required: true
-  },
-  planeIATACode: {
-    type: String,
-    required: true
-  },
-  maxCapacity: {
-    type: Number,
-    required: true
-  },
-  cabinSections: [CabinSectionSchema]
-}, {collection: 'airplanes'});
-
-export const AirplaneModel = model<AirplaneDocument>('Airplane', AirplaneSchema);
+export const AirplaneSchema = SchemaFactory.createForClass(Plane);

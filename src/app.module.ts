@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { FlightModule } from './modules/flight/flight.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { InfrastructureModule } from './infrastructure/infrastructure.module';
 import { AirplaneModule } from './modules/plane/airplane.module';
 
 @Module({
