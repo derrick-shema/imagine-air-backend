@@ -1,7 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { BaseAirportDto } from "./base-airport.dto";
 import { BaseCrewMemberDto } from "./base-crew.dto";
-import { BasePlaneDto } from "src/modules/plane/dtos/base-plane.dto";
 import { BasePassengerDto } from "./base-passenger.dto";
 
 export class BaseFlightDto {
@@ -12,13 +10,13 @@ export class BaseFlightDto {
   flightName: string;
 
   @ApiProperty()
-  plane: BasePlaneDto;
+  planeId: string;
 
   @ApiProperty()
-  departureAirport: BaseAirportDto;
+  departureAirportId: string;
 
   @ApiProperty()
-  arrivalAirport: BaseAirportDto;
+  arrivalAirportId: string;
 
   @ApiProperty()
   departureTime: Date;
@@ -26,9 +24,9 @@ export class BaseFlightDto {
   @ApiProperty()
   arrivalTime: Date;
 
-  @ApiProperty()
+  //@ApiProperty()
   crew: BaseCrewMemberDto[];
 
-  @ApiProperty()
+  //@ApiProperty()
   passengers: BasePassengerDto[];
 }

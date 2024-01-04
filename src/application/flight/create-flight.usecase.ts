@@ -33,37 +33,9 @@ export class CreateFlightUseCase {
     const flight = Flight.create(
       FlightId.createUnique(),
       FlightName.create('flight name', dto.flightName),
-      Airplane.create(
-        PlaneId.create('plane id', dto.plane.planeId),
-        TailNumber.create('tail number', dto.plane.tailNumber),
-        PlaneIATACode.create('plane IATA code', dto.plane.planeIATACode),
-        Capacity.create('plane capacity', dto.plane.maxCapacity),
-        dto.plane.cabinSections.map(section => CabinSection.create(
-          CabinSectionId.create('cabin section id', section.cabinSectionId),
-          section.sectionName,
-          section.rows,
-          section.arrangement,
-          section.seats.map(s => Seat.create(
-            SeatId.create('seat id', s.seatId),
-            SeatDesignation.create('Seat Designation',s.seatDesignation),
-            s.status
-          ))
-        ))
-      ),
-      Airport.create(
-        AirportId.createUnique(),
-        AirportName.create('airport name', dto.departureAirport.airportName),
-        IATA.create('airport IATA', dto.departureAirport.airportIATA),
-        CityName.create('city name', dto.departureAirport.city),
-        CityCode.create('city code', dto.departureAirport.city_code)
-      ),
-      Airport.create(
-        AirportId.createUnique(),
-        AirportName.create('airport name', dto.arrivalAirport.airportName),
-        IATA.create('airport IATA', dto.arrivalAirport.airportIATA),
-        CityName.create('city name', dto.arrivalAirport.city),
-        CityCode.create('city code', dto.arrivalAirport.city_code)
-      ),
+      PlaneId.create('plane id', dto.planeId),
+      AirportId.create('departure airportId', dto.departureAirportId),
+      AirportId.create('arrival airportId', dto.arrivalAirportId),
       dto.departureTime,
       dto.arrivalTime,
       dto.crew.map(c => CrewMember.create(

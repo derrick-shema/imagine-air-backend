@@ -4,10 +4,10 @@ import { RegisterPlaneUseCase } from "src/application/plane/register-plane.useca
 import { AirplaneService } from "./airplane.service";
 import { AirPlaneController } from "./airplane.controller";
 import { MongooseModule } from "@nestjs/mongoose";
-import { AirplaneModel, AirplaneSchema } from "src/infrastructure/airplane/airplane-schema";
+import { Plane, AirplaneSchema } from "src/infrastructure/airplane/airplane-schema";
 
 @Module({
-  imports:[MongooseModule.forFeature([{name: AirplaneModel.name, schema: AirplaneSchema}])],
+  imports:[MongooseModule.forFeature([{name: Plane.name, schema: AirplaneSchema}])],
   controllers: [AirPlaneController],
   providers: [AirplaneService, RegisterPlaneUseCase, MongoAirplaneRepository],
   exports: [AirplaneService]

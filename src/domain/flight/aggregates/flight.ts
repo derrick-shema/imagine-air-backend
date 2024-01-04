@@ -1,26 +1,26 @@
 import AggregateRoot from "src/domain/common/models/aggregate-root";
 import FlightId from "../value-objects/flight-id";
 import FlightName from "../value-objects/flight-name";
-import Airplane from "src/domain/airplane/aggregates/airplane";
-import Airport from "src/domain/airport/entities/airport";
 import CrewMember from "../entities/Crew";
 import Passenger from "../entities/Passenger";
+import PlaneId from "src/domain/airplane/value-objects/plane-id";
+import AirportId from "src/domain/airport/value-objects/airport-id";
 
 class Flight extends AggregateRoot<FlightId> {
   getFlightName() {
     return this.flightName;
   }
 
-  getFlightPlane() {
-    return this.plane;
+  getFlightPlaneId() {
+    return this.planeId;
   }
 
-  getDepartureAirport() {
-    return this.departureAirport;
+  getDepartureAirportId() {
+    return this.departureAirportId;
   }
 
-  getArrivalAirport() {
-    return this.arrivalAirport;
+  getArrivalAirportId() {
+    return this.arrivalAirportId;
   }
 
   getDepartureTime() {
@@ -41,13 +41,13 @@ class Flight extends AggregateRoot<FlightId> {
   constructor(
     id: FlightId,
     private flightName: FlightName,
-    private plane: Airplane,
-    private departureAirport: Airport,
-    private arrivalAirport: Airport,
+    private planeId: PlaneId,
+    private departureAirportId: AirportId,
+    private arrivalAirportId: AirportId,
     private departureTime: Date,
     private arrivalTime: Date,
-    private crew: CrewMember[],
-    private passengers: Passenger[]
+    private crew?: CrewMember[],
+    private passengers?: Passenger[]
   ){
     super(id);
   }
@@ -55,9 +55,9 @@ class Flight extends AggregateRoot<FlightId> {
   static create(
     id: FlightId,
     flightName: FlightName,
-    plane: Airplane,
-    departureAirport: Airport,
-    arrivalAirport: Airport,
+    planeId: PlaneId,
+    departureAirportId: AirportId,
+    arrivalAirportId: AirportId,
     departureTime: Date,
     arrivalTime: Date,
     crew: CrewMember[],
@@ -66,9 +66,9 @@ class Flight extends AggregateRoot<FlightId> {
     return new Flight(
       id,
       flightName,
-      plane,
-      departureAirport,
-      arrivalAirport,
+      planeId,
+      departureAirportId,
+      arrivalAirportId,
       departureTime,
       arrivalTime, 
       crew,

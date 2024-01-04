@@ -1,30 +1,26 @@
-import { SeatDocument, SeatSchema } from "./seat-schema";
-import { Schema} from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Seat } from './seat-schema';
+import { HydratedDocument } from 'mongoose';
 
-export interface CabinSectionDocument extends Document {
-  sectionName: string;
+export type CabinSectionDocument = HydratedDocument<CabinSection>;
+
+@Schema()
+export class CabinSection {
+
+  @Prop()
   cabinSectionId: string;
+
+  @Prop()
+  cabinSectionName: string;
+
+  @Prop()
   rows: number;
-  arrangement: [number];
-  seats: [SeatDocument]
+
+  @Prop()
+  arrangement: number[];
+
+  @Prop([Seat])
+  seats: Seat[];
 }
 
-export const CabinSectionSchema = new Schema<CabinSectionDocument>({
-  sectionName: {
-    type: String,
-    required: true
-  },
-  cabinSectionId: {
-    type: String,
-    required: true
-  },
-  rows: {
-    type: Number,
-    required: true
-  },
-  arrangement: {
-    type: [Number],
-    required: true
-  },
-  seats: [SeatSchema]
-})
+export const CabinSectionSchema = SchemaFactory.createForClass(CabinSection);

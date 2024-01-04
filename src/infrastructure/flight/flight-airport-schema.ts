@@ -1,27 +1,21 @@
-import { Schema, Document} from "mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { HydratedDocument } from "mongoose";
 
-export interface AirportDocument extends Document {
+export type FlightAirportDocument = HydratedDocument<FlightAirport>;
+
+@Schema()
+export class FlightAirport {
+  @Prop()
   airportName: string;
+
+  @Prop()
   airportIATA: string;
+
+  @Prop()
   city: string;
+
+  @Prop()
   city_code: string;
 }
 
-export const AirportSchema = new Schema<AirportDocument>({
-  airportName: {
-    type: String,
-    required: true
-  },
-  airportIATA: {
-    type: String,
-    required: true
-  },
-  city: {
-    type: String,
-    required: true
-  },
-  city_code: {
-    type: String,
-    required: true
-  }
-})
+export const FlightAirportSchema = SchemaFactory.createForClass(FlightAirport);

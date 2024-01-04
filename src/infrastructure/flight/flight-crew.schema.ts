@@ -1,22 +1,19 @@
-import { Schema, Document } from "mongoose";
+import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
 
-export interface FlightCrewDocument extends Document {
+export type FlightCrewDocument = HydratedDocument<FlightCrew>;
+
+@Schema()
+export class FlightCrew {
+  @Prop()
   firstName: string;
+
+  @Prop() 
   lastName: string;
-  role: string;
+
+  @Prop()
+  role: string
 }
 
-export const FlightCrewSchema = new Schema<FlightCrewDocument>({
-  firstName: {
-    type: String,
-    required: true
-  },
-  lastName: {
-    type: String,
-    required: true
-  },
-  role: {
-    type: String,
-    required: true
-  }
-})
+export const FlightCrewSchema = SchemaFactory.createForClass(FlightCrew);
+
