@@ -60,8 +60,8 @@ class Flight extends AggregateRoot<FlightId> {
     arrivalAirportId: AirportId,
     departureTime: Date,
     arrivalTime: Date,
-    // crew?: CrewMember[],
-    // passengers?: Passenger[]
+    crew?: CrewMember[],
+    passengers?: Passenger[]
   ){
     return new Flight(
       id,
@@ -71,8 +71,8 @@ class Flight extends AggregateRoot<FlightId> {
       arrivalAirportId,
       departureTime,
       arrivalTime, 
-      // crew,
-      // passengers
+      crew,
+      passengers
     );
   }
 }

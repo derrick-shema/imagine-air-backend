@@ -4,7 +4,7 @@ import { User } from './user.schema';
 @Schema({ collection: 'passengers' })
 export class Passenger extends User {
   @Prop()
-  seat: string;
+  bookingId: string;
 }
 
 export const PassengerSchema = SchemaFactory.createForClass(Passenger);
