@@ -17,18 +17,18 @@ export class MongoFlightRepository implements FlightRepository {
     const arrivalAirportId = flight.getArrivalAirportId().getValue();
     const departureTime = flight.getDepartureTime();
     const arrivalTime = flight.getArrivalTime();
-    const crew = flight.getFlightCrew().map(c => ({
-      crewMemberId: c.Id.getValue(),
-      firstName: c.getFirstName(),
-      lastName: c.getLastName(),
-      role: c.getRole()
-    }));
-    const passengers = flight.getFlightPassengers().map(p => ({
-      passengerId: p.Id.getValue(),
-      firstName: p.getFirstName(),
-      lastName: p.getLastName(),
-      seatDesignation: p.getSeat()
-    }));
+    // const crew = flight.getFlightCrew().map(c => ({
+    //   crewMemberId: c.Id.getValue(),
+    //   firstName: c.getFirstName(),
+    //   lastName: c.getLastName(),
+    //   role: c.getRole()
+    // }));
+    // const passengers = flight.getFlightPassengers().map(p => ({
+    //   passengerId: p.Id.getValue(),
+    //   firstName: p.getFirstName(),
+    //   lastName: p.getLastName(),
+    //   seatDesignation: p.getSeat()
+    // }));
 
     const flightData = {
       flightId,
@@ -38,8 +38,8 @@ export class MongoFlightRepository implements FlightRepository {
       arrivalAirportId,
       departureTime,
       arrivalTime, 
-      crew, 
-      passengers
+      // crew, 
+      // passengers
     }
     console.log(flightData);
     const newFlight = new this.flightModel(flightData);

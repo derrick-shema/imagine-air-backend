@@ -37,19 +37,19 @@ export class CreateFlightUseCase {
       AirportId.create('departure airportId', dto.departureAirportId),
       AirportId.create('arrival airportId', dto.arrivalAirportId),
       dto.departureTime,
-      dto.arrivalTime,
-      dto.crew.map(c => CrewMember.create(
-        CrewMemberId.create('crew member id', c.crewMemberId),
-        c.firstName,
-        c.lastName,
-        c.role
-      )),
-      dto.passengers.map(p => Passenger.create(
-        PassengerId.createUnique(),
-        p.firstName,
-        p.lastName,
-        SeatDesignation.create('seat designation', p.seat)
-      ))
+      dto.arrivalTime
+      // dto.crew?.map(c => CrewMember.create(
+      //   CrewMemberId.create('crew member id', c.crewMemberId),
+      //   c.firstName,
+      //   c.lastName,
+      //   c.role
+      // )),
+      // dto.passengers?.map(p => Passenger.create(
+      //   PassengerId.createUnique(),
+      //   p.firstName,
+      //   p.lastName,
+      //   SeatDesignation.create('seat designation', p.seat)
+      // ))
     )
     await this.flightRepository.save(flight);
     return flight;
