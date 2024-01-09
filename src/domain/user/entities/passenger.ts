@@ -6,16 +6,35 @@ import User from "./user";
 class Passenger extends User {
   constructor(
     id: UserId,
+    firstName: string,
+    lastName: string,
     email: Email,
     hashedAndSaltedPassword: HashedPassword,
     private bookingId: string
   ) {
-    super(id, email, hashedAndSaltedPassword);
+    super(id, firstName, lastName, email, hashedAndSaltedPassword);
   }
 
   // You can add additional methods or properties specific to passengers if needed
+  static create(
+    id: UserId,
+    firstName: string,
+    lastName: string,
+    email: Email,
+    hashedAndSaltedPassword: HashedPassword,
+    bookingId: string
+  ) {
+    return new Passenger(
+      id,
+      firstName,
+      lastName, 
+      email,
+      hashedAndSaltedPassword,
+      bookingId
+    )
+  }
 
-  public get BookingId(): string {
+  getBookingId(){
     return this.bookingId;
   }
 }

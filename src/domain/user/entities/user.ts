@@ -6,6 +6,8 @@ import HashedPassword from "../value-objects/user-password";
 class User extends Entity<UserId>{
   constructor(
     id: UserId,
+    private firstName: string,
+    private lastName: string,
     private email: Email,
     private hashedAndSaltedPassword: HashedPassword
   ) {
