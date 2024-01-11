@@ -2,9 +2,9 @@ import AggregateRoot from "src/domain/common/models/aggregate-root";
 import FlightId from "../value-objects/flight-id";
 import FlightName from "../value-objects/flight-name";
 import CrewMember from "../entities/Crew";
-import Passenger from "../entities/Passenger";
 import PlaneId from "src/domain/airplane/value-objects/plane-id";
 import AirportId from "src/domain/airport/value-objects/airport-id";
+import Passenger from "src/domain/user/entities/passenger";
 
 class Flight extends AggregateRoot<FlightId> {
   getFlightName() {
@@ -60,8 +60,8 @@ class Flight extends AggregateRoot<FlightId> {
     arrivalAirportId: AirportId,
     departureTime: Date,
     arrivalTime: Date,
-    crew: CrewMember[],
-    passengers: Passenger[]
+    crew?: CrewMember[],
+    passengers?: Passenger[]
   ){
     return new Flight(
       id,

@@ -1,24 +1,37 @@
 import Entity from "src/domain/common/models/entity";
 import UserId from "../value-objects/user-id";
-import UserName from "../value-objects/username";
 import Email from "../value-objects/user-email";
 import HashedPassword from "../value-objects/user-password";
-import UserRole from "../value-objects/user-role";
 
 class User extends Entity<UserId>{
+  getFirstName() {
+    return this.firstName;
+  }
+
+  getLastName() {
+    return this.lastName;
+  }
+
+  getEmail() {
+    return this.email.getValue();
+  }
+  getHashedAndSaltedPassword() {
+    return this.hashedAndSaltedPassword.getValue();
+  }
+  
   constructor(
     id: UserId,
-    private username: UserName,
+    private firstName: string,
+    private lastName: string,
     private email: Email,
-    private hashedPassword: HashedPassword,
-    private role: UserRole,
+    private hashedAndSaltedPassword: HashedPassword
   ) {
     super(id);
   }
 
-  // public Equals(other: Entity<UserId>): boolean {
-  //   return this.Id.Equals(other.Id);
-  // }
+  public Equals(other: Entity<UserId>): boolean {
+    return this.Id.Equals(other.Id);
+  }
 }
 
 export default User;

@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { FlightCrew } from './flight-crew.schema';
-import { FlightPassenger } from './flight-passenger.schema';
 
 export type FlightDocument = HydratedDocument<Flight>;
 
@@ -29,10 +27,10 @@ export class Flight {
   arrivalTime: Date
 
   @Prop()
-  crew: FlightCrew[]
+  crew: string[]
 
   @Prop()
-  passengers: FlightPassenger[]
+  passengers: string[]
 }
 
 export const FlightSchema = SchemaFactory.createForClass(Flight);
