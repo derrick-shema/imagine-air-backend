@@ -1,11 +1,24 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { User } from './user.schema';
+import { HydratedDocument } from "mongoose";
 
-@Schema({ collection: 'passengers' })
-export class Passenger extends User {
+export type PassengerDocument = HydratedDocument<Passenger>;
+
+@Schema()
+export class Passenger {
+  @Prop()
+  firstName: string;
+
+  @Prop()
+  lastName: string;
+
+  @Prop()
+  email: string;
+
+  @Prop()
+  hashedAndSaltedPassword: string;
+  
   @Prop()
   bookingId: string;
 }
 
 export const PassengerSchema = SchemaFactory.createForClass(Passenger);
-PassengerSchema.set('discriminatorKey', 'type');

@@ -1,8 +1,22 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { User } from './user.schema';
+import { HydratedDocument } from "mongoose";
 
-@Schema({ collection: 'staff' })
-export class Staff extends User {
+export type StaffDocument = HydratedDocument<Staff>;
+
+@Schema()
+export class Staff {
+  @Prop()
+  firstName: string;
+
+  @Prop()
+  lastName: string;
+
+  @Prop()
+  email: string;
+
+  @Prop()
+  hashedAndSaltedPassword: string;
+  
   @Prop()
   role: string;
 
@@ -11,5 +25,4 @@ export class Staff extends User {
 }
 
 export const StaffSchema = SchemaFactory.createForClass(Staff);
-StaffSchema.set('discriminatorKey', 'type');
 

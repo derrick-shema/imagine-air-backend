@@ -4,6 +4,21 @@ import Email from "../value-objects/user-email";
 import HashedPassword from "../value-objects/user-password";
 
 class User extends Entity<UserId>{
+  getFirstName() {
+    return this.firstName;
+  }
+
+  getLastName() {
+    return this.lastName;
+  }
+
+  getEmail() {
+    return this.email.getValue();
+  }
+  getHashedAndSaltedPassword() {
+    return this.hashedAndSaltedPassword.getValue();
+  }
+  
   constructor(
     id: UserId,
     private firstName: string,

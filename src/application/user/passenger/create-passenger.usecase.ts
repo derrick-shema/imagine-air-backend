@@ -19,6 +19,7 @@ export class CreatePassengerUseCase {
       await HashedPassword.create('Hashed Password', dto.password),
       dto.bookingId
     );
+    await this.mongoPassengerRepository.save(passenger);
     return passenger;
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import Passenger from "src/domain/flight/entities/Passenger";
+import Passenger from "src/domain/user/entities/Passenger";
 import PassengerRepository from "src/domain/user/repositories/passenger.repository";
 import { Passenger as MongoPassenger } from "./passenger.schema";
 import { Model } from "mongoose";
@@ -9,7 +9,7 @@ import { Model } from "mongoose";
 export class MongoPassengerRepository implements PassengerRepository{
   constructor(@InjectModel(MongoPassenger.name) private readonly passengerModel: Model<MongoPassenger>){}
   async save(passenger: Passenger) {
-    const passengerId = passenger.Id.getValue(); 
+    const passengerId = passenger.Id.Value; 
     const firstName = passenger.getFirstName();
     const lastName = passenger.getLastName();
     const email = passenger.getEmail();
@@ -26,8 +26,6 @@ export class MongoPassengerRepository implements PassengerRepository{
     }
 
     const newPassenger = new this.passengerModel(passengerData);
-    console.log(newPassenger);
-    console.log(passengerData);
     await newPassenger.save();
   }
 }
