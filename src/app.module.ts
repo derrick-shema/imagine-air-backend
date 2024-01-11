@@ -5,13 +5,15 @@ import { AuthModule } from './modules/auth/auth.module';
 import { FlightModule } from './modules/flight/flight.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AirplaneModule } from './modules/plane/airplane.module';
+import { PassengerModule } from './modules/user/passenger/passenger.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb+srv://derrickshema:Kwiga4991@cluster0.pbfu2bn.mongodb.net/imagine-air'),
     AuthModule, 
     AirplaneModule,
-    FlightModule],
+    FlightModule,
+    PassengerModule],
   controllers: [AppController],
   providers: [AppService],
 })
