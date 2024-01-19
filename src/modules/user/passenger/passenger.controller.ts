@@ -8,7 +8,7 @@ export class PassengerController {
   constructor(private readonly passengerService: PassengerService){}
 
   @Post('create')
-  async createPassenger(@Body() requestDto: CreatePassengerDto): Promise<Passenger>{
-    return await this.passengerService.create(requestDto)
+  createPassenger(@Body() requestDto: CreatePassengerDto){
+    return this.passengerService.create(requestDto)
   }
 }

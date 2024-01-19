@@ -7,7 +7,7 @@ import Passenger from "src/domain/user/entities/passenger";
 export class PassengerService {
   constructor(private readonly createPassengerUseCase: CreatePassengerUseCase){}
 
-  async create(dto: CreatePassengerDto): Promise<Passenger> {
-    return await this.createPassengerUseCase.execute(dto)
+  create(dto: CreatePassengerDto){
+    return this.createPassengerUseCase.execute(dto)
   }
 }

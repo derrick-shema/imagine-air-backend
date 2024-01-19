@@ -9,8 +9,8 @@ export class FlightController {
   constructor(private readonly flightService: FlightService) {}
 
   @Post('register')
-  async create(@Body() createFlightDto: CreateFlightDto): Promise<Flight> {
-    return await this.flightService.create(createFlightDto);
+  create(@Body() createFlightDto: CreateFlightDto){
+    return this.flightService.create(createFlightDto);
   }
 
   @Get()

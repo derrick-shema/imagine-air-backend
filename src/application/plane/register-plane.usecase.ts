@@ -17,7 +17,6 @@ export class RegisterPlaneUseCase {
   constructor(private readonly airplaneRepository: MongoAirplaneRepository){}
 
   async execute(dto: RegisterPlaneDto): Promise<Airplane>{
-    // receives properties of a plane from client's dto
     const airplane = Airplane.create(
       PlaneId.createUnique(),
       TailNumber.create('tail number', dto.tailNumber),

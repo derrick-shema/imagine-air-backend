@@ -5,7 +5,7 @@ import { CreateStaffDto } from "./dtos/create-staff.dto";
 @Injectable()
 export class StaffService {
   constructor(private readonly createStaffUseCase: CreateStaffUsecase){}
-  async create(dto: CreateStaffDto){
+  create(dto: CreateStaffDto){
     return this.createStaffUseCase.execute(dto);
   }
 }
