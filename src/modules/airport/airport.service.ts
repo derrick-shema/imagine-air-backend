@@ -6,7 +6,7 @@ import { RegisterAirportDto } from "./dtos/register-airport.dto";
 export class AirportService {
   constructor(private readonly registerAirportUseCase: RegisterAirportUseCase){}
 
-  async registerAirport(dto: RegisterAirportDto){
-    await this.registerAirportUseCase.execute(dto);
+  registerAirport(dto: RegisterAirportDto){
+    return this.registerAirportUseCase.execute(dto);
   }
 }

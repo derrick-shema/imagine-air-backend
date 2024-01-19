@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import Airport from "src/domain/airport/entities/airport";
 import IATA from "src/domain/airport/value-objects/IATA-code";
 import AirportId from "src/domain/airport/value-objects/airport-id";
@@ -7,6 +8,7 @@ import CityName from "src/domain/airport/value-objects/city-name";
 import { MongoAirportRepository } from "src/infrastructure/airport/mongo-airport.repository";
 import { RegisterAirportDto } from "src/modules/airport/dtos/register-airport.dto";
 
+@Injectable()
 export class RegisterAirportUseCase {
   constructor(private airportRepository: MongoAirportRepository){}
   async execute(dto: RegisterAirportDto): Promise<Airport>{

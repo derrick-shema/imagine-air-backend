@@ -7,7 +7,7 @@ export class AirportController{
   constructor(private readonly airportService: AirportService){};
 
   @Post('register')
-  async create(@Body() registerAirportDto: RegisterAirportDto){
-    await this.airportService.registerAirport(registerAirportDto);
+  create(@Body() registerAirportDto: RegisterAirportDto){
+    return this.airportService.registerAirport(registerAirportDto);
   }
 }
