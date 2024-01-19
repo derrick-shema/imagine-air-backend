@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument } from "mongoose";
 
-export type FlightAirportDocument = HydratedDocument<FlightAirport>;
+export type FlightAirportDocument = HydratedDocument<Airport>;
 
 @Schema()
-export class FlightAirport {
+export class Airport {
   @Prop()
   airportName: string;
 
@@ -18,4 +18,4 @@ export class FlightAirport {
   city_code: string;
 }
 
-export const FlightAirportSchema = SchemaFactory.createForClass(FlightAirport);
+export const AirportSchema = SchemaFactory.createForClass(Airport);
