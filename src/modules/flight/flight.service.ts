@@ -7,8 +7,8 @@ import Flight from 'src/domain/flight/aggregates/flight';
 @Injectable()
 export class FlightService {
   constructor(private readonly createFlightUseCase: CreateFlightUseCase){}
-  async create(dto: CreateFlightDto): Promise<Flight> {
-    return await this.createFlightUseCase.execute(dto);
+  create(dto: CreateFlightDto){
+    return this.createFlightUseCase.execute(dto);
   }
 
   findAll() {

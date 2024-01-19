@@ -9,7 +9,7 @@ export class AirPlaneController{
   constructor(private readonly airplaneService: AirplaneService) {}
 
   @Post('register')
-  async registerPlane(@Body() requestDto: RegisterPlaneDto): Promise<Airplane>{
-    return await this.airplaneService.registerAirplane(requestDto);
+  registerPlane(@Body() requestDto: RegisterPlaneDto){
+    return this.airplaneService.registerAirplane(requestDto);
   }
 }

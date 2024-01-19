@@ -7,7 +7,7 @@ export class StaffController {
   constructor(private readonly staffService: StaffService){}
 
   @Post('create')
-  async createStaff(@Body() requestDto: CreateStaffDto){
-    return await this.staffService.create(requestDto);
+  createStaff(@Body() requestDto: CreateStaffDto){
+    return this.staffService.create(requestDto);
   }
 }

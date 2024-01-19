@@ -9,8 +9,7 @@ export class AirplaneService {
     private readonly registerPlaneUseCase: RegisterPlaneUseCase,
   ) {}
 
-  async registerAirplane(dto: RegisterPlaneDto): Promise<Airplane> {
-    // Delegate registration to the use case
-    return await this.registerPlaneUseCase.execute(dto);
+  registerAirplane(dto: RegisterPlaneDto){
+    return this.registerPlaneUseCase.execute(dto);
   }
 }
