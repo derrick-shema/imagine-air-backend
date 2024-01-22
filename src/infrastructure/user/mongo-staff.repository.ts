@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import Staff from "src/domain/user/entities/staff";
 import StaffRepository from "src/domain/user/repositories/staff.repository";
-import { Staff as MongoStaff } from "./staff.schema";
+import { StaffMember as MongoStaff } from "./staff.schema";
 import { Model } from "mongoose";
 
 @Injectable()

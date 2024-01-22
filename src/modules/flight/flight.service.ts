@@ -3,16 +3,19 @@ import { CreateFlightDto } from './dto/create-flight.dto';
 import { UpdateFlightDto } from './dto/update-flight.dto';
 import { CreateFlightUseCase } from 'src/application/flight/create-flight.usecase';
 import Flight from 'src/domain/flight/aggregates/flight';
+import { GetAllFlightsUseCase } from 'src/application/flight/get-all-flights.usecase';
 
 @Injectable()
 export class FlightService {
-  constructor(private readonly createFlightUseCase: CreateFlightUseCase){}
+  constructor(
+    private readonly createFlightUseCase: CreateFlightUseCase,
+    private readonly getAllFlightsUseCase: GetAllFlightsUseCase){}
   create(dto: CreateFlightDto){
     return this.createFlightUseCase.execute(dto);
   }
 
   findAll() {
-    return `This action returns all flight`;
+    return this.getAllFlightsUseCase.execute();
   }
 
   findOne(id: number) {

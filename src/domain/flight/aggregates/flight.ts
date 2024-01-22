@@ -46,8 +46,8 @@ class Flight extends AggregateRoot<FlightId> {
     private arrivalAirportId: AirportId,
     private departureTime: Date,
     private arrivalTime: Date,
-    private crew?: CrewMember[],
-    private passengers?: Passenger[]
+    private crew?: string[],
+    private passengers?: string[]
   ){
     super(id);
   }
@@ -60,8 +60,8 @@ class Flight extends AggregateRoot<FlightId> {
     arrivalAirportId: AirportId,
     departureTime: Date,
     arrivalTime: Date,
-    crew?: CrewMember[],
-    passengers?: Passenger[]
+    crew?: string[],
+    passengers?: string[]
   ){
     return new Flight(
       id,
