@@ -2,7 +2,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import FlightRepository from "src/domain/flight/repositories/flight.repository";
 import { Flight as MongoFlight } from "./flight-schema";
 import { Model } from "mongoose";
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import Flight from "src/domain/flight/aggregates/flight";
 import FlightId from "src/domain/flight/value-objects/flight-id";
 import FlightName from "src/domain/flight/value-objects/flight-name";
@@ -40,6 +40,14 @@ export class MongoFlightRepository implements FlightRepository {
   async findAll(): Promise<Flight[]> {
     const flights = await this.flightModel.find().exec();
     return flights.map(flight => this.mapToDomain(flight));
+  }
+
+  async findOneById(id: string): Promise<Flight> {
+    const flight = await this.flightModel.findById(id).exec();
+    if (!flight) {
+      throw new NotFoundException(`Flight with ID ${id} not found`);
+    }
+    return this.mapToDomain(flight);
   }
 
   private mapToDomain(flightModel: MongoFlight): Flight {

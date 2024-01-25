@@ -20,7 +20,7 @@ export class FlightController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.flightService.findOne(+id);
+    return this.flightService.findOne(id);
   }
 
   @Patch(':id')
