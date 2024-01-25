@@ -17,16 +17,16 @@ export class MongoFlightRepository implements FlightRepository {
   async save(flight: Flight) {
     const flightId = flight.Id.getValue();
     const flightName = flight.getFlightName().getValue();
-    const flightPlaneId = flight.getFlightPlaneId().getValue();
+    const planeId = flight.getFlightPlaneId().getValue();
     const departureAirportId = flight.getDepartureAirportId().getValue();
     const arrivalAirportId = flight.getArrivalAirportId().getValue();
     const departureTime = flight.getDepartureTime();
     const arrivalTime = flight.getArrivalTime();
-
+    
     const flightData = {
       flightId,
       flightName,
-      flightPlaneId,
+      planeId,
       departureAirportId,
       arrivalAirportId,
       departureTime,
@@ -46,7 +46,7 @@ export class MongoFlightRepository implements FlightRepository {
     return new Flight(
       FlightId.create('flightId',flightModel.flightId),
       FlightName.create('flightName',flightModel.flightName),
-      PlaneId.create('planeId',flightModel.flightPlaneId),
+      PlaneId.create('planeId',flightModel.planeId),
       AirportId.create('departureAirportId', flightModel.departureAirportId),
       AirportId.create('arrivalAirportId', flightModel.arrivalAirportId),
       flightModel.departureTime,
