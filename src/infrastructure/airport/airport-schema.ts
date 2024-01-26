@@ -6,6 +6,9 @@ export type FlightAirportDocument = HydratedDocument<Airport>;
 @Schema()
 export class Airport {
   @Prop()
+  airportId: string; 
+
+  @Prop()
   airportName: string;
 
   @Prop()
