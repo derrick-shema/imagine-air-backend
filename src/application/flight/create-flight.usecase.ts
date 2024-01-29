@@ -21,6 +21,8 @@ export class CreateFlightUseCase {
       dto.departureTime,
       dto.arrivalTime
     )
+    console.log(flight);
+    console.log(dto);
     await this.flightRepository.save(flight);
     return flight;
   }

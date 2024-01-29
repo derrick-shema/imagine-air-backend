@@ -16,7 +16,7 @@ export class CreatePassengerUseCase {
       dto.firstName,
       dto.lastName,
       Email.create('Passenger Email', dto.email),
-      await HashedPassword.create('Hashed Password', dto.password),
+      (await HashedPassword.create('Hashed Password', dto.password)).getValue(),
       dto.bookingId
     );
     await this.mongoPassengerRepository.save(passenger);

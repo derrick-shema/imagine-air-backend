@@ -16,7 +16,7 @@ class User extends Entity<UserId>{
     return this.email.getValue();
   }
   getHashedAndSaltedPassword() {
-    return this.hashedAndSaltedPassword.getValue();
+    return this.hashedAndSaltedPassword;
   }
   
   constructor(
@@ -24,7 +24,7 @@ class User extends Entity<UserId>{
     private firstName: string,
     private lastName: string,
     private email: Email,
-    private hashedAndSaltedPassword: HashedPassword
+    private hashedAndSaltedPassword: string
   ) {
     super(id);
   }

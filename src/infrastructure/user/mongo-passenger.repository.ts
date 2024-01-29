@@ -1,9 +1,11 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import Passenger from "src/domain/user/entities/Passenger";
 import PassengerRepository from "src/domain/user/repositories/passenger.repository";
 import { Passenger as MongoPassenger } from "./passenger.schema";
 import { Model } from "mongoose";
+import Email from "src/domain/user/value-objects/user-email";
+import UserId from "src/domain/user/value-objects/user-id";
 
 @Injectable()
 export class MongoPassengerRepository implements PassengerRepository{
@@ -27,5 +29,30 @@ export class MongoPassengerRepository implements PassengerRepository{
 
     const newPassenger = new this.passengerModel(passengerData);
     await newPassenger.save();
+  }
+
+  async findAllPassengers(): Promise<Passenger[]> {
+    const passengers = await this.passengerModel.find().exec();
+    return passengers.map(passenger => this.mapToModel(passenger));
+  }
+
+  async findOnePassengerbyID(id: string): Promise<Passenger> {
+    const passenger = await this.passengerModel.findById(id).exec();
+    if(!passenger){
+      throw new NotFoundException(`Passenger with ID ${id} not found`)
+    }
+
+    return this.mapToModel(passenger);
+  }
+
+  private mapToModel(passengerModel: MongoPassenger): Passenger {
+    return Passenger.create(
+      UserId.Create('passenger id', passengerModel.passengerId),
+      passengerModel.firstName,
+      passengerModel.lastName,
+      Email.create('passenger email', passengerModel.email),
+      passengerModel.hashedAndSaltedPassword,
+      passengerModel.bookingId
+    )
   }
 }

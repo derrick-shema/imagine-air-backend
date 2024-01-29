@@ -9,7 +9,7 @@ class Passenger extends User {
     firstName: string,
     lastName: string,
     email: Email,
-    hashedAndSaltedPassword: HashedPassword,
+    hashedAndSaltedPassword: string,
     private bookingId: string
   ) {
     super(id, firstName, lastName, email, hashedAndSaltedPassword);
@@ -21,7 +21,7 @@ class Passenger extends User {
     firstName: string,
     lastName: string,
     email: Email,
-    hashedAndSaltedPassword: HashedPassword,
+    hashedAndSaltedPassword: string,
     bookingId: string
   ) {
     return new Passenger(

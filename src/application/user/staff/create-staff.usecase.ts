@@ -15,7 +15,7 @@ export class CreateStaffUsecase {
       dto.firstName,
       dto.lastName,
       Email.create('Staff email', dto.email),
-      await HashedPassword.create('Staff password', dto.password),
+      (await HashedPassword.create('Staff password', dto.password)).getValue(),
       dto.role,
       dto.title
     )

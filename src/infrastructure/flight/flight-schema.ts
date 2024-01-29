@@ -12,7 +12,7 @@ export class Flight {
   flightName: string;
 
   @Prop()
-  flightPlaneId: string;
+  planeId: string;
 
   @Prop()
   departureAirportId: string;

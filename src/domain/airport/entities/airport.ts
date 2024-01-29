@@ -7,7 +7,7 @@ import CityCode from "../value-objects/city-code";
 
 class Airport extends Entity<AirportId> {
   getAirportId() {
-    return;
+    return this.Id.getValue();
   }
 
   getAirportName() {
@@ -33,14 +33,14 @@ class Airport extends Entity<AirportId> {
     private city: CityName,
     private city_code: CityCode
   ) {
-    super(id);
+    super(id)
   }
 
-  static create(id: AirportId, airportName: AirportName, aiportIATA: IATA, city: CityName, city_code: CityCode) {
+  static create(id: AirportId, airportName: AirportName, airportIATA: IATA, city: CityName, city_code: CityCode) {
     return new Airport(
       id,
       airportName,
-      aiportIATA,
+      airportIATA,
       city,
       city_code
     )
