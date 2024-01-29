@@ -17,7 +17,7 @@ export default class Staff extends User {
     firstName: string,
     lastName: string,
     email: Email,
-    hashedAndSaltedPassword: HashedPassword,
+    hashedAndSaltedPassword: string,
     private role: string,
     private title: string
   ){
@@ -29,7 +29,7 @@ export default class Staff extends User {
     firstName: string,
     lastName: string,
     email: Email,
-    hashedAndSaltedPassword: HashedPassword,
+    hashedAndSaltedPassword: string,
     role: string,
     title: string
   ){

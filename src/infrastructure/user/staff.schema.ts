@@ -6,6 +6,9 @@ export type StaffDocument = HydratedDocument<StaffMember>;
 @Schema()
 export class StaffMember {
   @Prop()
+  staffId: string
+  
+  @Prop()
   firstName: string;
 
   @Prop()
