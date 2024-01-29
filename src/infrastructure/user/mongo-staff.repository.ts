@@ -32,7 +32,7 @@ export class MongoStaffRepository implements StaffRepository{
     return staff.map(staff => this.mapToModel(staff));
   }
 
-  async findOnebyID(id: string): Promise <Staff>{
+  async findOnebyID(id: string): Promise<Staff>{
     const staffMember = await this.staffModel.findById(id).exec();
     if (!staffMember) {
       throw new NotFoundException(`Staff member with id ${id} not found`)

@@ -1,5 +1,7 @@
+import { Injectable } from "@nestjs/common";
 import { MongoStaffRepository } from "src/infrastructure/user/mongo-staff.repository";
 
+@Injectable()
 export class GetOneStaffMemberUsecase {
   constructor(private readonly staffRepository: MongoStaffRepository){}
 
